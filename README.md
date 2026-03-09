@@ -18,6 +18,10 @@
 
 ---
 
+## Link:
+
+[![Stable?](https://img.shields.io/badge/Release-v1.svg?style=flat)](https://github.com/abdullah-erturk/Network-Inventory-Scanner/archive/refs/heads/main.zip)
+
 <details>
 <summary><strong>Türkçe Tanıtım</strong></summary>
 
